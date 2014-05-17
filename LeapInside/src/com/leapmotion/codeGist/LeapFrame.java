@@ -47,7 +47,10 @@ public class LeapFrame extends JFrame
 	{
 		public void mouseMoved(MouseEvent event)
 		{
-			panelLeap.setBackground(Color.BLACK);
+			if((event.getSource() == panelLeap) && (event.equals(controller))) /*TODO: to pass a new frame when the event happens on the object*/
+			{
+				panelLeap.setBackground(Color.BLACK);
+			}	
 		}
 		public void mouseDragged(MouseEvent event)
 		{

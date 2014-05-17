@@ -1,6 +1,5 @@
 package com.leapmotion.codeGist;
 
-import com.leapmotion.leap.Listener;
 import com.leapmotion.leap.*;
 import com.leapmotion.leap.Gesture.*;
 
@@ -46,9 +45,37 @@ public class LeapListener extends Listener
 					float Xnorm = normalizedPosition.getX() * pane.getWidth();
 					float Ynorm = pane.getHeight() * (1 - normalizedPosition.getY());
 				}
+				GestureRecog(currFrame.gestures(), controller);
 				
 			}
 		}
 	}
 	
+	private void GestureRecog(GestureList gestures, Controller controller)
+	{
+		for (Gesture gesture : gestures)
+		{
+			switch(gesture.type())
+			{
+			case TYPE_CIRCLE:
+				CircleGesture circle = new CircleGesture(gesture);
+				String clockwiseness;
+				
+				if(circle.pointable().direction().angleTo(circle.normal()) <= Math.PI/2)
+				{
+					clockwiseness = "clockwise";
+					System.out.println(clockwiseness);
+				}
+				else
+				{
+					clockwiseness = "counterclockwise";
+					System.out.println(clockwiseness);
+				}
+				break;
+			default:
+		        System.out.println("Unknown gesture type.");
+		        break;
+			}
+		}
+	}
 }

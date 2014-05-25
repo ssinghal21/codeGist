@@ -13,28 +13,28 @@ import com.leapmotion.leap.*;
 public class MusicPane extends JFrame 
 {
 	private JPanel panelMusic;
-	private static final int MusicPaneWidth = 800;
-	private static final int MusicPaneHeight = 600;
+	public static final int MusicPaneWidth = 800;
+	public static final int MusicPaneHeight = 600;
 	
-	private LeapListener MusicPaneListener;
-	private Controller controller;
+	private MusicPaneListener MusicPanel;
+	private Controller controllerOne;
 	
 	public MusicPane()
 	{
-		JFrame musicWindow = new JFrame();
+		//JFrame musicWindow = new JFrame();
 		panelMusic = new JPanel();
 		
-		MusicPaneListener = new LeapListener(this); //TODO:define a constructor for music pane in the leap motion listener class
-		controller = new Controller();
-		controller.addListener(MusicPaneListener);
+		MusicPanel = new MusicPaneListener(this); //TODO:define a constructor for music pane in the leap motion listener class
+		controllerOne = new Controller();
+		controllerOne.addListener(MusicPanel);
 		
-		musicWindow.setSize(MusicPaneWidth, MusicPaneHeight);
+		this.setSize(MusicPaneWidth, MusicPaneHeight);
 		panelMusic.setBackground(Color.CYAN);
-		musicWindow.setVisible(true);
-		musicWindow.setResizable(false);
-		musicWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		musicWindow.setLocationRelativeTo(null);
-		musicWindow.getContentPane().add(panelMusic);
+		this.setVisible(true);
+		this.setResizable(false);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLocationRelativeTo(null);
+		this.getContentPane().add(panelMusic);
 		
 		musicHandler mHandle = new musicHandler();
 		panelMusic.addMouseMotionListener(mHandle);

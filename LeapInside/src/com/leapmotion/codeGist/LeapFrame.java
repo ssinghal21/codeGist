@@ -21,21 +21,21 @@ public class LeapFrame extends JFrame
 	
 	public LeapFrame()	/*---constructor defining the window characteristics---*/
 	{
-		JFrame mainWindow = new JFrame();
+		//JFrame mainWindow = new JFrame();
 		panelLeap = new JPanel();
 		
 		panelListener = new LeapListener(this);
 		controller = new Controller();
 		controller.addListener(panelListener);
 		
-		mainWindow.setSize(winWidth, winDepth);
+		this.setSize(winWidth, winDepth);
 		panelLeap.setBackground(Color.WHITE);
-		mainWindow.setVisible(true);
-		mainWindow.setResizable(false);
-		mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		mainWindow.setLocationRelativeTo(null);
+		this.setVisible(true);
+		this.setResizable(false);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setLocationRelativeTo(null);
 		//mainWindow.setLocation(winWidth/2, winDepth/2);
-		mainWindow.getContentPane().add(panelLeap);
+		this.getContentPane().add(panelLeap);
 		
 		theHandler handler = new theHandler();
 		panelLeap.addMouseMotionListener(handler);

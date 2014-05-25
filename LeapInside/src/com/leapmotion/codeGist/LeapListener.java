@@ -11,16 +11,13 @@ public class LeapListener extends Listener
 	private LeapFrame pane;
 	//float Xnorm=0, Ynorm=0;
 	String clockwiseness;
+	//int count;
 	private MusicPane musicChann;
+	private static final int MAX_FRAME_COUNT = 20;
 	public LeapListener(LeapFrame windowLeap)
 	{
 		super();
 		pane = windowLeap;
-	}
-	public LeapListener(MusicPane musPane)
-	{
-		super();
-		musicChann = musPane;
 	}
 	public void onConnect(Controller controller)
 	{
@@ -66,32 +63,38 @@ public class LeapListener extends Listener
 	{
 		for (Gesture gesture : gestures)
 		{
-			switch(gesture.type())
-			{
-			case TYPE_CIRCLE:
-				CircleGesture circle = new CircleGesture(gesture);
-				//String clockwiseness;
-				
-				if(circle.pointable().direction().angleTo(circle.normal()) <= Math.PI/2)
+			//count = 0;
+			//while(count < MAX_FRAME_COUNT)
+			//{
+				switch(gesture.type())
 				{
-					clockwiseness = "clockwise";
-					System.out.println(clockwiseness);
+				case TYPE_CIRCLE:
+					CircleGesture circle = new CircleGesture(gesture);
+					//String clockwiseness;
+
+					if(circle.pointable().direction().angleTo(circle.normal()) <= Math.PI/2)
+					{
+						clockwiseness = "clockwise";
+						System.out.println(clockwiseness);
+						//new MusicPane();
+					}
+					else
+					{
+						clockwiseness = "counterclockwise";
+						System.out.println(clockwiseness);
+					}
+					break;
+				default:
+					System.out.println("Unknown gesture type.");
+					break;
 				}
-				else
-				{
-					clockwiseness = "counterclockwise";
-					System.out.println(clockwiseness);
-				}
-				break;
-			default:
-		        System.out.println("Unknown gesture type.");
-		        break;
-			}			
-//			if(clockwiseness == "clockwise")
-//			{
-				/*----generate a new frame consisting of music panel----*/
-//				new MusicPane();			
-//			}
+				//count++;
+			//}				
+		}
+		if(clockwiseness == "clockwise")
+		{
+			/*----generate a new frame consisting of music panel----*/
+			new MusicPane();			
 		}
 	}
 	

@@ -1,6 +1,8 @@
 package com.leapmotion.codeGist;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionListener;
 
@@ -8,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import com.leapmotion.leap.*;
+
 import java.awt.AWTException;
 import java.awt.Robot;
 public class LeapFrame extends JFrame
@@ -40,7 +43,6 @@ public class LeapFrame extends JFrame
 		theHandler handler = new theHandler();
 		panelLeap.addMouseMotionListener(handler);
 		
-		
 	}//end of LeapFrame
 	
 	
@@ -51,20 +53,26 @@ public class LeapFrame extends JFrame
 	{
 		public void mouseMoved(MouseEvent event)
 		{
-/*
-			if((event.getSource() == panelLeap) && (event.equals(controller))) /*TODO: to pass a new frame when the event happens on the object*/
-//			{
-//				panelLeap.setBackground(Color.BLACK);
-				
-//			}	
+			
 		}
 		public void mouseDragged(MouseEvent event)
 		{
-//			panelLeap.setBackground(Color.BLUE);
+
 		}
 	}
 		
-	
+/*
+	private class theHandler implements ActionListener
+	{
+		public void actionPerformed(ActionEvent event)
+		{
+			if((event.getSource() == panelLeap))
+			{
+				
+			}
+		}
+	}
+*/	
 	public static void main(String args[])
 	{
 		new LeapFrame();

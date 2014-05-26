@@ -11,7 +11,7 @@ public class LeapListener extends Listener
 	private LeapFrame pane;
 	//float Xnorm=0, Ynorm=0;
 	String clockwiseness;
-	//int count;
+	int count;
 	private MusicPane musicChann;
 	private static final int MAX_FRAME_COUNT = 20;
 	public LeapListener(LeapFrame windowLeap)
@@ -54,11 +54,17 @@ public class LeapListener extends Listener
 					//System.out.println(pane.winWidth);
 					System.out.println(Xnorm + "," + Ynorm);					
 				}
-				GestureRecog(currFrame.gestures(), controller);
+				//count = MAX_FRAME_COUNT;
+				//while(count != 0)
+			//	{
+					GestureRecog(currFrame.gestures(), controller);
+				//	count--;
+			//	}	
 			}
 		}
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void GestureRecog(GestureList gestures, Controller controller)
 	{
 		for (Gesture gesture : gestures)
@@ -89,12 +95,14 @@ public class LeapListener extends Listener
 					break;
 				}
 				//count++;
-			//}				
+			//}			
 		}
+
 		if(clockwiseness == "clockwise")
 		{
 			/*----generate a new frame consisting of music panel----*/
-			new MusicPane();			
+			//new MusicPane();
+			musicChann.setVisible(true);
 		}
 	}
 	

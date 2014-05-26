@@ -17,6 +17,7 @@ public class LeapListener extends Listener
 	public LeapListener(LeapFrame windowLeap)
 	{
 		super();
+		musicChann = new MusicPane();
 		pane = windowLeap;
 	}
 	public void onConnect(Controller controller)
